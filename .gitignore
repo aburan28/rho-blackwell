@@ -1,0 +1,14 @@
+ecc2k130/ecc2k130
+ecc2k130/ecc2k130-cpu
+ecc2k130/build/
+nist/bench
+nist/test_cpu
+nist/test_rho
+paper/*.aux
+paper/*.log
+paper/*.out
+paper/*.toc
+paper/*.bbl
+paper/*.blg
+paper/*.lof
+paper/*.lot

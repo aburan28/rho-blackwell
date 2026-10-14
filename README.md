@@ -91,7 +91,7 @@ development repository and are not included here.
 
 This repository is a release snapshot. The work was developed in three
 repositories, `aburan28/crypto` (client, campaign, measurements),
-`aburan28/cryptanalysis` (independent C model, packed CPU client, F4 kernels)
+`aburan28/cryptanalysis` (independent C model, packed CPU client)
 and `aburan28/crypto-autoresearcher` (research ledger); `evidence/map.json`
 records where each evidence file came from. AWS account identifiers in the
 operations records are redacted.

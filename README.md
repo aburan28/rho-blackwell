@@ -1,8 +1,8 @@
 # rho-blackwell
 
 Code, data and evidence for the paper **"Accelerating Pollard Rho with GPU Field
-Arithmetic: ECC2K-130 on NVIDIA Blackwell"**
-([`paper/ecc2k130.pdf`](paper/ecc2k130.pdf)).
+Arithmetic on NVIDIA Blackwell"**
+([`paper/rho-blackwell.pdf`](paper/rho-blackwell.pdf)).
 
 The paper measures what Pollard rho costs on current NVIDIA hardware with the
 Certicom challenge ECC2K-130 as the yardstick: 14.64 billion iterations per

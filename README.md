@@ -67,7 +67,7 @@ at cutoff 32.
 | `nist/` | NIST P-256/P-384 field arithmetic and the Pollard-rho kernel; `make test` runs the CPU checks, `make bench` the GPU bench. |
 | `docker/` | `Dockerfile` and the entry point. |
 | `benchmarks/` | Data and plotting source behind the NIST batch-width figure; `solvetime/solvetime.py`, the arithmetic behind the paper's time-to-solve section. |
-| `evidence/` | The paper's evidence records: `E01-…` to `E91-…`, numbered as in the paper's Appendix B, with `map.json` naming the original file of each. |
+| `evidence/` | The paper's evidence records: `E01-…` to `E80-…`, numbered as in the paper's Appendix B, with `map.json` naming the original file of each. |
 
 ### Building without Docker
 

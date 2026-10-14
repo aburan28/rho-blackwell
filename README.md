@@ -53,7 +53,10 @@ build it separately with `ARCHES=75 CLMAD=0`), `CPU_MARCH` (default
 A single container is very unlikely to find a collision on its own: the
 expected work is 2^60.9 iterations, about five RTX PRO 6000 GPU-years. A
 collision is found by merging the distinguished points of many walkers that used
-the same cutoff.
+the same cutoff. The paper's Section 16 sizes a fleet: five RTX PRO 6000s expect a
+collision in about a year, 56 in a month, and a thousand in about three days,
+half of which is the delay before the last trail reaches a distinguished point
+at cutoff 32.
 
 ## What is here
 
@@ -63,7 +66,7 @@ the same cutoff.
 | `ecc2k130/` | The ECC2K-130 client: CUDA and CPU from one source, the field code generator, generated field routines, and the toy walk in `examples/`. |
 | `nist/` | NIST P-256/P-384 field arithmetic and the Pollard-rho kernel; `make test` runs the CPU checks, `make bench` the GPU bench. |
 | `docker/` | `Dockerfile` and the entry point. |
-| `benchmarks/` | Data and plotting source behind the NIST batch-width figure. |
+| `benchmarks/` | Data and plotting source behind the NIST batch-width figure; `solvetime/solvetime.py`, the arithmetic behind the paper's time-to-solve section. |
 | `evidence/` | The paper's evidence records: `E01-…` to `E88-…`, numbered as in the paper's Appendix B, with `map.json` naming the original file of each. |
 
 ### Building without Docker

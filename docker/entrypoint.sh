@@ -15,6 +15,8 @@
 #   RUN_ID      16-bit seed salt (1-65535). Default: a random id in 20000-65535,
 #               kept in /data/run-id so a restarted container resumes the same walks.
 #               Two containers must never share one: identical seeds walk identical trails.
+#               Random ids collide often at scale (about 10% for 100 containers), so
+#               assign a distinct RUN_ID to every container of a multi-container run.
 #   DP_WEIGHT   distinguished-point cutoff (default 32, as in the campaign)
 #   THREADS     total walks; default: the audited 385,024 workers on an RTX PRO 6000,
 #               the client's automatic choice elsewhere
@@ -37,8 +39,10 @@ gpu_name() {
 run_id() {
     if [ -n "${RUN_ID:-}" ]; then echo "$RUN_ID"; return; fi
     if [ -s "$DATA/run-id" ]; then cat "$DATA/run-id"; return; fi
-    local id=$(( 20000 + RANDOM % 45536 ))
+    local id=$(( 20000 + (RANDOM * 32768 + RANDOM) % 45536 ))
     echo "$id" > "$DATA/run-id"
+    echo "warning: RUN_ID not set; picked $id at random. Containers sharing a run id walk" >&2
+    echo "identical trails, so give every container in a multi-container run its own RUN_ID." >&2
     echo "$id"
 }
 

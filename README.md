@@ -10,6 +10,14 @@ second on one RTX PRO 6000 Blackwell in the audited campaign build (15.88 in the
 best later build), about 230 times the best published 2010 GPU kernel, built
 around the carry-less multiply that CUDA 13.3 exposes in PTX (`clmad`).
 
+## Status
+
+This snapshot is not yet public. The CPU client, its validation suite, a
+planted-logarithm solve and every mode of the entry point have been run from
+this copy of the source; the Docker image itself has not yet been built, and its
+GPU modes have not been run. The commands below are the intended workflow and
+will be checked before release.
+
 ## Run it
 
 The Docker image builds the client with CUDA 13.3 for Ampere, Ada, Hopper and
@@ -30,9 +38,10 @@ docker run rho-blackwell help
 `walk` uses the GPU when one is visible and the CPU otherwise. Distinguished
 points (32-byte records) and a resumable checkpoint go to `/data`; a restarted
 container with the same volume resumes its walks. Each container picks a random
-run identifier in 20000–65535 and keeps it in `/data/run-id`; set `RUN_ID`
-explicitly when running many containers, since two with the same identifier walk
-the same trails. Other settings: `DP_WEIGHT` (default 32), `THREADS` (default:
+run identifier in 20000–65535, keeps it in `/data/run-id` and warns that it did
+so. Two containers with the same identifier walk the same trails, and random
+choices collide with probability about 0.1% for 10 containers, 10% for 100 and
+63% for 300, so give every container of a multi-container run its own `RUN_ID`. Other settings: `DP_WEIGHT` (default 32), `THREADS` (default:
 the audited 385,024 workers on an RTX PRO 6000, automatic elsewhere),
 `CPU_THREADS`, `DEVICE`.
 
@@ -50,7 +59,7 @@ the same cutoff.
 
 | directory | contents |
 |---|---|
-| `paper/` | LaTeX source, figures (TikZ/pgfplots, in `figures/`), bibliography, built PDF. `make` builds it. |
+| `paper/` | LaTeX source, figures (TikZ/pgfplots, in `figures/`), bibliography, built PDF. `make` builds it; `make figures-export` writes SVG and PNG copies of the figures. |
 | `ecc2k130/` | The ECC2K-130 client: CUDA and CPU from one source, the field code generator, generated field routines, and the toy walk in `examples/`. |
 | `nist/` | NIST P-256/P-384 field arithmetic and the Pollard-rho kernel; `make test` runs the CPU checks, `make bench` the GPU bench. |
 | `docker/` | `Dockerfile` and the entry point. |

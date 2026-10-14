@@ -12,3 +12,5 @@ paper/*.bbl
 paper/*.blg
 paper/*.lof
 paper/*.lot
+paper/figures-standalone.pdf
+paper/submission-staging/

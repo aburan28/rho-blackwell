@@ -12,11 +12,9 @@ around the carry-less multiply that CUDA 13.3 exposes in PTX (`clmad`).
 
 ## Status
 
-This snapshot is not yet public. The CPU client, its validation suite, a
-planted-logarithm solve and every mode of the entry point have been run from
-this copy of the source; the Docker image itself has not yet been built, and its
-GPU modes have not been run. The commands below are the intended workflow and
-will be checked before release.
+The CPU client, its validation suite, a planted-logarithm solve and every mode
+of the entry point have been run from this copy of the source; the Docker image
+itself has not yet been built, and its GPU modes have not been run.
 
 ## Run it
 

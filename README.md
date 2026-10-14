@@ -1,7 +1,7 @@
 # rho-blackwell
 
-Code, data and evidence for the paper **"Pollard Rho on NVIDIA Blackwell:
-ECC2K-130, Carry-less Multiplication and the NIST Curves"**
+Code, data and evidence for the paper **"Accelerating Pollard Rho with GPU Field
+Arithmetic: ECC2K-130 on NVIDIA Blackwell"**
 ([`paper/ecc2k130.pdf`](paper/ecc2k130.pdf)).
 
 The paper measures what Pollard rho costs on current NVIDIA hardware with the
